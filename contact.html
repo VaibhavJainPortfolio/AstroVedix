@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AstroVediX | Connect with Cosmic Wisdom</title>
+    <meta name="description" content="Connect with AstroVediX for authentic Vedic astrology consultations. Reach us via email, WhatsApp, or social media for personalized cosmic guidance.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        /* Enhanced Contact Page Styles */
+        .contact-hero {
+            background: linear-gradient(135deg, #faf9fa 0%, #f9f4f6 50%, #faf9fa 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 80px;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(55, 33, 121, 0.06), rgba(182, 98, 129, 0.03), transparent);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        .contact-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            right: -15%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(226, 176, 105, 0.08), rgba(55, 33, 121, 0.03), transparent);
+            border-radius: 50%;
+            animation: float 12s ease-in-out infinite reverse;
+            filter: blur(1px);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.6;
+            }
+            33% {
+                transform: translateY(-30px) translateX(20px) scale(1.1);
+                opacity: 0.8;
+            }
+            66% {
+                transform: translateY(20px) translateX(-15px) scale(0.9);
+                opacity: 0.7;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-main), var(--accent-purple), var(--highlight-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-light);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-decorative {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            opacity: 0.02;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23372179"/><circle cx="25" cy="25" r="1" fill="%23b66281"/><circle cx="75" cy="25" r="1" fill="%23e2b069"/><circle cx="25" cy="75" r="1" fill="%23c18abc"/><circle cx="75" cy="75" r="1" fill="%23372179"/></svg>');
+            background-size: 50px 50px;
+            animation: rotate 45s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .contact-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            box-shadow: 0 8px 32px rgba(55, 33, 121, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            text-align: center;
+            border: 1px solid rgba(55, 33, 121, 0.05);
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-pink), var(--accent-purple), var(--highlight-gold), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .contact-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(55, 33, 121, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 1rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bg-soft), var(--white));
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:nth-child(1) .contact-icon {
+            color: var(--accent-pink);
+            box-shadow: 0 8px 24px rgba(182, 98, 129, 0.2);
+        }
+        .contact-card:nth-child(2) .contact-icon {
+            color: var(--accent-purple);
+            box-shadow: 0 8px 24px rgba(126, 55, 126, 0.2);
+        }
+        .contact-card:nth-child(3) .contact-icon {
+            color: var(--highlight-gold);
+            box-shadow: 0 8px 24px rgba(226, 176, 105, 0.2);
+        }
+        .contact-card:nth-child(4) .contact-icon {
+            color: var(--primary-main);
+            box-shadow: 0 8px 24px rgba(55, 33, 121, 0.2);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contact-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .contact-link {
+            color: var(--primary-main);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+
+        .social-section {
+            background: linear-gradient(135deg, var(--bg-soft), var(--bg-light));
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 L60 40 L90 40 L68 58 L78 88 L50 70 L22 88 L32 58 L10 40 L40 40 Z" fill="%23372179" opacity="0.02"/></svg>');
+            background-size: 100px 100px;
+            animation: twinkle 8s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.1; }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-icon.youtube {
+            background: linear-gradient(45deg, #FF0000, #CC0000, #AA0000);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .social-icon:hover::before {
+            animation: pulse-glow 1.5s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+            50% { box-shadow: 0 0 0 20px rgba(255,255,255,0); }
+        }
+
+        .social-handles {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            box-shadow: 0 8px 32px rgba(55, 33, 121, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-reminder {
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-light), var(--accent-purple));
+            color: var(--text-white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-reminder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,10 61,35 90,35 69,57 79,82 50,65 21,82 31,57 10,35 39,35" fill="white" opacity="0.03"/></svg>');
+            background-size: 150px 150px;
+            animation: float-stars 20s linear infinite;
+        }
+
+        @keyframes float-stars {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-150px); }
+        }
+
+        .booking-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-reminder h2 {
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        .booking-reminder p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .book-now-btn {
+            background: linear-gradient(135deg, var(--highlight-gold), #f4d03f);
+            color: var(--text-dark);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 8px 32px rgba(226, 176, 105, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(226, 176, 105, 0.5);
+            color: var(--text-dark);
+        }
+
+        .book-now-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .book-now-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding: 100px 0 60px;
+                min-height: 60vh;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .contact-icon {
+                font-size: 3rem;
+            }
+
+            .social-icons {
+                gap: 2rem;
+            }
+
+            .social-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .booking-reminder {
+                padding: 80px 0;
+            }
+
+            .book-now-btn {
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-hero {
+                padding: 80px 0 40px;
+            }
+
+            .contact-card {
+                padding: 2rem 1rem;
+            }
+
+            .social-icons {
+                gap: 1.5rem;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Loading animation */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-light);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(55, 33, 121, 0.1);
+            border-top: 3px solid var(--primary-main);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+</div>
+
+<!-- Navigation (External Load) -->
+<div id="navbar-container"></div>
+
+<!-- Hero Section -->
+<section class="contact-hero">
+    <div class="hero-decorative"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Connect with AstroVediX</h1>
+            <p class="hero-subtitle">Clarity, compassion, and cosmic precision guide every interaction. Let the stars illuminate your path to wisdom.</p>
+            <div style="margin-top: 2rem;">
+                <i class="fas fa-star" style="color: var(--highlight-gold); font-size: 1.5rem; margin: 0 0.5rem; animation: twinkle 2s ease-in-out infinite;"></i>
+                <i class="fas fa-moon" style="color: var(--accent-purple); font-size: 1.3rem; margin: 0 0.5rem; animation: twinkle 2.5s ease-in-out infinite;"></i>
+                <i class="fas fa-sun" style="color: var(--accent-pink); font-size: 1.4rem; margin: 0 0.5rem; animation: twinkle 3s ease-in-out infinite;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Details Section -->
+<section class="contact-section">
+    <div class="container">
+        <h2 class="section-title">How to Reach Us</h2>
+        <p class="section-subtitle">Multiple ways to connect with our cosmic guidance team. Choose what feels right for your spiritual journey.</p>
+
+        <div class="contact-grid">
+            <!-- Email Card -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>📧 Email Consultation</h3>
+                <p>Send us your birth details and questions. We'll respond with personalized cosmic insights and guidance.</p>
+                <a href="mailto:ask.astrovedix@gmail.com" class="contact-link">ask.astrovedix@gmail.com</a>
+            </div>
+
+            <!-- Phone/WhatsApp Card -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>📱 Instant Connection</h3>
+                <p>Direct communication for immediate assistance, quick questions, and session bookings.</p>
+                <div>
+                    <a href="tel:+919587886006" class="contact-link">+91-9587886006</a>
+                    <a href="https://wa.me/919587886006?text=Hello%20AstroVediX!%20I%20would%20like%20to%20book%20a%20consultation." class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Online Sessions Card -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>🌐 Virtual Sessions</h3>
+                <p>Face-to-face consultations via Zoom, Google Meet, or WhatsApp Video. Experience personal connection from anywhere in the world.</p>
+                <span class="contact-link">Global Availability</span>
+            </div>
+
+            <!-- Response Time Card -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>⏰ Response Promise</h3>
+                <p>We typically respond within 24–48 hours with thoughtful, personalized guidance. Quality over speed is our commitment.</p>
+                <span class="contact-link">Mon - Sat: 9 AM - 8 PM IST</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Media Section -->
+<section class="social-section">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-title">Join Our Cosmic Community</h2>
+            <p class="section-subtitle">
+                Follow our journey through the stars. Daily insights, cosmic updates, and spiritual wisdom await you.
+            </p>
+
+            <div class="social-icons">
+                <a href="https://instagram.com/astrovedix" class="social-icon instagram" title="Follow us on Instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@astrovedix" class="social-icon youtube" title="Subscribe to our YouTube Channel" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+
+            <div class="social-handles">
+                <p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 1rem;">
+                    <strong>Connect with us:</strong>
+                </p>
+                <p style="color: var(--text-dark);">
+                    📸 Instagram: <a href="https://instagram.com/astrovedix" class="contact-link" target="_blank">@AstroVediX</a>
+                    <br>
+                    📺 YouTube: <a href="https://youtube.com/@astrovedix" class="contact-link" target="_blank">AstroVediX Channel</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Reminder Section -->
+<section class="booking-reminder">
+    <div class="container">
+        <div class="booking-content">
+            <h2>✨ Ready to Unlock Your Cosmic Blueprint?</h2>
+            <p>
+                Take the first step towards understanding your true potential.
+                Let ancient wisdom guide you to modern clarity and purposeful living.
+            </p>
+            <a href="book.html" class="book-now-btn">
+                Book Your Session
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer (External Load) -->
+<div id="footer-container"></div>
+
+<script>
+    // Page loader
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            document.getElementById('pageLoader').classList.add('hidden');
+        }, 500);
+    });
+
+    // Load external navbar and footer
+    async function loadComponent(elementId, filename) {
+        try {
+            const response = await fetch(filename);
+            if (response.ok) {
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+            } else {
+                console.warn(`Could not load ${filename}`);
+            }
+        } catch (error) {
+            console.warn(`Error loading ${filename}:`, error);
+        }
+    }
+
+    // Load components
+    loadComponent('navbar-container', 'navbar.html');
+    loadComponent('footer-container', 'footer.html');
+
+    // Enhanced scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all contact cards
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.contact-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    });
+
+    // Navbar scroll effect (will work when navbar is loaded)
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+    });
+
+    // Smooth scrolling for internal links
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('a[href^="#"]')) {
+            e.preventDefault();
+            const target = document.querySelector(e.target.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+
+    // Enhanced parallax effect for hero section
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const heroElements = document.querySelectorAll('.contact-hero::before, .contact-hero::after');
+
+        if (scrolled < window.innerHeight) {
+            document.querySelector('.contact-hero').style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
+
+    // Add loading states for external content
+    function addLoadingState() {
+        const navbar = document.getElementById('navbar-container');
+        const footer = document.getElementById('footer-container');
+
+        navbar.innerHTML = '<div style="height: 80px; background: rgba(250,249,250,0.95); backdrop-filter: blur(10px);"></div>';
+        footer.innerHTML = '<div style="height: 200px; background: linear-gradient(135deg, #2d1653, #372179);"></div>';
+    }
+
+    addLoadingState();
+</script>
+</body>
+</html>

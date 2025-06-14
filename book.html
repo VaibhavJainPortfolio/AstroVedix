@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session - AstroVediX</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for booking page */
+        .hero-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-lavender);
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        .star:nth-child(odd) {
+            animation-delay: 1s;
+            background: var(--highlight-gold);
+        }
+
+        .star:nth-child(3n) {
+            animation-delay: 2s;
+            background: var(--accent-pink);
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-booking {
+            min-height: 60vh;
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-soft));
+            position: relative;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-main), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .info-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .info-content h2 {
+            color: var(--primary-main);
+            margin-bottom: 2rem;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .info-list li::before {
+            content: "✨";
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-image {
+            background: linear-gradient(135deg, var(--accent-lavender), var(--accent-pink));
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.3)"/><circle cx="5" cy="5" r="0.5" fill="rgba(255,255,255,0.2)"/><circle cx="15" cy="5" r="0.7" fill="rgba(255,255,255,0.2)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .booking-form-section {
+            padding: 5rem 0;
+            background: var(--bg-soft);
+        }
+
+        .booking-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+        }
+
+        .booking-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple), var(--highlight-gold));
+            border-radius: 25px 25px 0 0;
+        }
+
+        .form-title {
+            text-align: center;
+            color: var(--primary-main);
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background: var(--bg-soft);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%23666"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 20px;
+            padding-right: 3rem;
+        }
+
+        .form-select:focus {
+            border-color: var(--primary-main);
+            background-color: var(--white);
+            box-shadow: 0 0 15px rgba(55, 33, 121, 0.2);
+        }
+
+        .form-input[type="date"],
+        .form-input[type="time"] {
+            cursor: pointer;
+        }
+
+        .form-input[type="date"]::-webkit-calendar-picker-indicator,
+        .form-input[type="time"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(0.5);
+            transition: filter 0.3s ease;
+        }
+
+        .form-input[type="date"]:hover::-webkit-calendar-picker-indicator,
+        .form-input[type="time"]:hover::-webkit-calendar-picker-indicator {
+            filter: invert(0.3);
+        }
+
+        .form-input[type="date"]:focus::-webkit-calendar-picker-indicator,
+        .form-input[type="time"]:focus::-webkit-calendar-picker-indicator {
+            filter: invert(0.2);
+        }
+
+        // Enhanced form interactions
+        const formInputs = document.querySelectorAll('.form-input, .form-select');
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--highlight-coral), var(--primary-light));
+            color: var(--text-white);
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 25px rgba(224, 135, 120, 0.4);
+            background: linear-gradient(135deg, var(--primary-light), var(--highlight-coral));
+        }
+
+        .after-submission {
+            background: var(--white);
+            padding: 3rem 0;
+        }
+
+        .submission-info {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-soft));
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent-purple);
+        }
+
+        .submission-info h3 {
+            color: var(--primary-main);
+            margin-bottom: 1.5rem;
+        }
+
+        .submission-info ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .submission-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .submission-info li::before {
+            content: "🌟";
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .info-image {
+                height: 250px;
+                order: -1;
+            }
+
+            .booking-card {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .booking-card {
+                padding: 1.5rem;
+            }
+
+            .btn-submit {
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation will be loaded here -->
+<div id="navbar-placeholder"></div>
+
+<!-- Hero Section -->
+<section class="hero-booking">
+    <div class="hero-stars">
+        <div class="star" style="top: 10%; left: 15%;"></div>
+        <div class="star" style="top: 20%; right: 20%;"></div>
+        <div class="star" style="top: 30%; left: 80%;"></div>
+        <div class="star" style="top: 40%; left: 10%;"></div>
+        <div class="star" style="top: 50%; right: 15%;"></div>
+        <div class="star" style="top: 60%; left: 70%;"></div>
+        <div class="star" style="top: 70%; right: 30%;"></div>
+        <div class="star" style="top: 80%; left: 25%;"></div>
+        <div class="star" style="bottom: 10%; right: 25%;"></div>
+        <div class="star" style="bottom: 20%; left: 60%;"></div>
+    </div>
+    <div class="container">
+        <div class="hero-content scale-in">
+            <h1 class="hero-title">Book a Session with AstroVediX</h1>
+            <p class="hero-subtitle fade-in-text">Start your journey towards cosmic clarity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Why Book Online Section -->
+<section class="info-section scroll-reveal">
+    <div class="container">
+        <div class="info-grid">
+            <div class="info-content">
+                <h2>Why Book Online?</h2>
+                <ul class="info-list">
+                    <li>Simplifies your journey from curiosity to clarity</li>
+                    <li>Flexible time slots – let us know what works</li>
+                    <li>Session types tailored to your concerns</li>
+                    <li>Confirmation and reminders sent directly to you</li>
+                </ul>
+            </div>
+            <div class="info-image">
+                🔮
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Form Section -->
+<section class="booking-form-section scroll-reveal">
+    <div class="container">
+        <div class="booking-card">
+            <h2 class="form-title">📅 Book a Session — Inquiry Form</h2>
+            <form id="bookingForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <input type="text" id="fullName" class="form-input" placeholder=" " required>
+                        <label for="fullName" class="form-label">Full Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-input" placeholder=" " required>
+                        <label for="email" class="form-label">Email Address</label>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <input type="tel" id="phone" class="form-input" placeholder=" ">
+                        <label for="phone" class="form-label">Phone Number (Optional)</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="sessionType" class="form-select" required>
+                            <option value="">Select Session Type</option>
+                            <option value="personal-consultation">Personal Astrological Consultation</option>
+                            <option value="tarot-reading">Tarot & Oracle Reading</option>
+                            <option value="career-guidance">Career Guidance</option>
+                            <option value="marriage-compatibility">Marriage Compatibility Guidance</option>
+                            <option value="chakra-healing">Chakra Healing & Energy Balancing</option>
+                            <option value="other">Other (please specify in query)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <input type="date" id="preferredDate1" class="form-input" required>
+                        <label for="preferredDate1" class="form-label">Preferred Date (1st Choice)</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="time" id="preferredTime1" class="form-input" required>
+                        <label for="preferredTime1" class="form-label">Preferred Time (1st Choice)</label>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <input type="date" id="preferredDate2" class="form-input">
+                        <label for="preferredDate2" class="form-label">Preferred Date (2nd Choice)</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="time" id="preferredTime2" class="form-input">
+                        <label for="preferredTime2" class="form-label">Preferred Time (2nd Choice)</label>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-group-full">
+                    <textarea id="query" class="form-input form-textarea" placeholder=" " rows="4" required></textarea>
+                    <label for="query" class="form-label">Your Query or Focus Area</label>
+                </div>
+
+                <div class="form-group form-group-full">
+                    <textarea id="additionalNotes" class="form-input form-textarea" placeholder=" " rows="3"></textarea>
+                    <label for="additionalNotes" class="form-label">Additional Notes (Optional)</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- After Submission Info -->
+<section class="after-submission scroll-reveal">
+    <div class="container">
+        <div class="submission-info">
+            <h3>What Happens Next?</h3>
+            <ul>
+                <li>We will review your request and availability</li>
+                <li>You'll receive a confirmation email with final session details</li>
+                <li>Reminders will be sent via email or WhatsApp</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Footer will be loaded here -->
+<div id="footer-placeholder"></div>
+
+<script>
+    // Load navbar and footer
+    async function loadComponent(elementId, filename) {
+        try {
+            const response = await fetch(filename);
+            const html = await response.text();
+            document.getElementById(elementId).innerHTML = html;
+        } catch (error) {
+            console.log('Component not found:', filename);
+        }
+    }
+
+    // Load components
+    loadComponent('navbar-placeholder', 'navbar.html');
+    loadComponent('footer-placeholder', 'footer.html');
+
+    // Scroll reveal animation
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll('.scroll-reveal');
+
+        reveals.forEach(reveal => {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveal.getBoundingClientRect().top;
+            const elementVisible = 150;
+
+            if (elementTop < windowHeight - elementVisible) {
+                reveal.classList.add('revealed');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+
+    // Initial check
+    revealOnScroll();
+
+    // Form submission handler
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = {
+            fullName: document.getElementById('fullName').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            sessionType: document.getElementById('sessionType').value,
+            preferredDate1: document.getElementById('preferredDate1').value,
+            preferredTime1: document.getElementById('preferredTime1').value,
+            preferredDate2: document.getElementById('preferredDate2').value,
+            preferredTime2: document.getElementById('preferredTime2').value,
+            timezone: document.getElementById('timezone').value,
+            query: document.getElementById('query').value,
+            additionalNotes: document.getElementById('additionalNotes').value
+        };
+
+        // Show success message
+        alert('Thank you for your booking inquiry! We will review your request and get back to you within 24 hours with confirmation details.');
+
+        // Reset form
+        this.reset();
+
+        // In a real application, you would send this data to your server
+        console.log('Booking inquiry submitted:', formData);
+    });
+
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('preferredDate1').setAttribute('min', today);
+    document.getElementById('preferredDate2').setAttribute('min', today);
+
+    // Auto-detect and set user's timezone
+    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const timezoneSelect = document.getElementById('timezone');
+
+    // Try to match common timezones
+    if (userTimezone.includes('Kolkata') || userTimezone.includes('Delhi')) {
+        timezoneSelect.value = 'IST';
+    } else if (userTimezone.includes('London')) {
+        timezoneSelect.value = 'GMT';
+    } else if (userTimezone.includes('New_York')) {
+        timezoneSelect.value = 'EST';
+    } else if (userTimezone.includes('Los_Angeles')) {
+        timezoneSelect.value = 'PST';
+    } else if (userTimezone.includes('Chicago')) {
+        timezoneSelect.value = 'CST';
+    } else if (userTimezone.includes('Tokyo')) {
+        timezoneSelect.value = 'JST';
+    } else if (userTimezone.includes('Sydney')) {
+        timezoneSelect.value = 'AEST';
+    } else if (userTimezone.includes('Berlin') || userTimezone.includes('Paris')) {
+        timezoneSelect.value = 'CET';
+    }
+
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.style.transform = 'scale(1.02)';
+            this.parentElement.style.transition = 'transform 0.3s ease';
+        });
+
+        input.addEventListener('blur', function() {
+            this.parentElement.style.transform = 'scale(1)';
+        });
+    });
+
+    // Add navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+    });
+</script>
+</body>
+</html>

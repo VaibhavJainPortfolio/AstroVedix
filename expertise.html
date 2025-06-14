@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Expertise - AstroVediX | Ancient Systems That Illuminate Your Path</title>
+    <meta name="description" content="Discover the ancient spiritual systems and cosmic wisdom that guide our practice - from Vedic Astrology to Chakra Healing, unlocking your soul's deepest truths.">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Expertise Hero Section */
+        .expertise-hero {
+            background: linear-gradient(135deg, #f9f4f6 0%, #faf9fa 100%);
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 25% 25%, rgba(55, 33, 121, 0.06), transparent 60%),
+                radial-gradient(circle at 75% 75%, rgba(182, 98, 129, 0.05), transparent 60%),
+                radial-gradient(circle at 50% 50%, rgba(226, 176, 105, 0.04), transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Spiritual Yantra Background */
+        .yantra-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.03;
+            background: radial-gradient(circle, transparent 30%, rgba(126, 55, 126, 0.1) 50%, transparent 70%);
+            border-radius: 50%;
+            animation: slowRotate 60s linear infinite;
+        }
+
+        .yantra-bg::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(126, 55, 126, 0.1);
+            border-radius: 50%;
+        }
+
+        .yantra-bg::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 140px;
+            height: 140px;
+            border: 1px solid rgba(226, 176, 105, 0.1);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        @keyframes slowRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .expertise-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .expertise-hero h1 {
+            font-size: 3.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .expertise-hero .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s ease 0.8s forwards;
+        }
+
+        /* Core Expertise Section */
+        .core-expertise {
+            padding: 8rem 0;
+            background: var(--white);
+            position: relative;
+        }
+
+        .expertise-flow {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .expertise-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 2.5rem;
+            background: rgba(250, 249, 250, 0.7);
+            border-radius: 20px;
+            border-left: 4px solid transparent;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .expertise-block:nth-child(even) {
+            transform: translateX(50px);
+            border-left: none;
+            border-right: 4px solid transparent;
+        }
+
+        .expertise-block.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .expertise-block:nth-child(1).revealed { border-left-color: var(--accent-purple); }
+        .expertise-block:nth-child(2).revealed { border-right-color: var(--accent-pink); }
+        .expertise-block:nth-child(3).revealed { border-left-color: var(--highlight-gold); }
+        .expertise-block:nth-child(4).revealed { border-right-color: var(--primary-main); }
+        .expertise-block:nth-child(5).revealed { border-left-color: var(--accent-lavender); }
+        .expertise-block:nth-child(6).revealed { border-right-color: var(--highlight-coral); }
+
+        .expertise-icon {
+            font-size: 3.5rem;
+            min-width: 80px;
+            text-align: center;
+            filter: drop-shadow(0 4px 8px rgba(55, 33, 121, 0.1));
+            animation: gentleBob 3s ease-in-out infinite;
+        }
+
+        .expertise-icon:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes gentleBob {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .expertise-content h3 {
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .expertise-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Animated Divider */
+        .spiritual-divider {
+            height: 2px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+            margin: 1.5rem auto;
+            position: relative;
+            opacity: 0.6;
+        }
+
+        .spiritual-divider::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(126, 55, 126, 0.5);
+        }
+
+        /* Quote Section */
+        .spiritual-quote {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--bg-soft), var(--bg-light));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spiritual-quote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(126, 55, 126, 0.03), transparent 70%);
+            pointer-events: none;
+        }
+
+        .quote-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent-purple);
+            line-height: 1.4;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: scaleIn 1s ease 0.3s forwards;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--highlight-gold);
+            position: absolute;
+            opacity: 0.7;
+        }
+
+        .quote-text::before {
+            top: -10px;
+            left: -30px;
+        }
+
+        .quote-text::after {
+            bottom: -30px;
+            right: -30px;
+        }
+
+        /* Choose Your Path Section */
+        .choose-path {
+            padding: 7rem 0;
+            background: var(--white);
+        }
+
+        .path-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .path-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .path-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(55, 33, 121, 0.08);
+            border: 1px solid rgba(55, 33, 121, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .path-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple), var(--highlight-gold));
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .path-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .path-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(55, 33, 121, 0.15);
+        }
+
+        .path-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .path-card h4 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .path-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .path-btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, var(--accent-lavender), var(--accent-purple));
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .path-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(126, 55, 126, 0.3);
+            color: white;
+        }
+
+        /* CTA Section */
+        .expertise-cta {
+            background: linear-gradient(135deg, var(--bg-soft), var(--bg-light));
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .expertise-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(55, 33, 121, 0.03), transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: 2.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #e08778, #d67368);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(224, 135, 120, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #372179, #30227d);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-btn:hover::before {
+            left: 0;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(224, 135, 120, 0.4);
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .expertise-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .expertise-hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .expertise-block {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 2rem;
+                transform: translateY(30px);
+            }
+
+            .expertise-block:nth-child(even) {
+                transform: translateY(30px);
+                border-right: none;
+                border-left: 4px solid transparent;
+            }
+
+            .expertise-block.revealed {
+                transform: translateY(0);
+            }
+
+            .expertise-icon {
+                font-size: 3rem;
+                min-width: auto;
+                text-align: left;
+            }
+
+            .quote-text {
+                font-size: 1.8rem;
+            }
+
+            .path-title {
+                font-size: 2.2rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .expertise-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .expertise-block {
+                padding: 1.5rem;
+            }
+
+            .quote-text {
+                font-size: 1.5rem;
+            }
+
+            .quote-text::before,
+            .quote-text::after {
+                font-size: 2rem;
+            }
+
+            .path-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation will be loaded here -->
+<div id="navbar-placeholder"></div>
+
+<!-- Expertise Hero Section -->
+<section class="expertise-hero">
+    <div class="yantra-bg"></div>
+
+    <div class="container">
+        <div class="expertise-hero-content">
+            <h1 class="scale-in">Our Expertise</h1>
+            <p class="subtitle">Ancient Systems That Illuminate Your Path</p>
+        </div>
+    </div>
+</section>
+
+<!-- Core Expertise Section -->
+<section class="core-expertise">
+    <div class="container">
+        <div class="expertise-flow">
+
+            <div class="expertise-block">
+                <div class="expertise-icon">🔯</div>
+                <div class="expertise-content">
+                    <h3>Vedic Astrology (Parashara System)</h3>
+                    <div class="spiritual-divider"></div>
+                    <p>The foundational system of Indian astrology, based on the ancient teachings of Sage Parashara. This comprehensive approach examines planetary positions, houses, and their intricate relationships to reveal your life's blueprint, karmic patterns, and spiritual evolution path.</p>
+                </div>
+            </div>
+
+            <div class="expertise-block">
+                <div class="expertise-icon">📜</div>
+                <div class="expertise-content">
+                    <h3>Bhrigu Nandi Nadi Astrology</h3>
+                    <div class="spiritual-divider"></div>
+                    <p>An advanced predictive system that reveals specific life events, karmic debts, and soul contracts with remarkable precision. This ancient palm leaf tradition provides detailed insights into past lives, current challenges, and future possibilities for spiritual growth.</p>
+                </div>
+            </div>
+
+            <div class="expertise-block">
+                <div class="expertise-icon">🔢</div>
+                <div class="expertise-content">
+                    <h3>Numerology</h3>
+                    <div class="spiritual-divider"></div>
+                    <p>The sacred science of numbers that unlocks the vibrational essence of your name, birth date, and life path. Discover your soul's purpose, innate talents, and the cosmic timing that governs your personal and professional success.</p>
+                </div>
+            </div>
+
+            <div class="expertise-block">
+                <div class="expertise-icon">🃏</div>
+                <div class="expertise-content">
+                    <h3>Tarot & Oracle Card Readings</h3>
+                    <div class="spiritual-divider"></div>
+                    <p>Intuitive divination tools that bridge the conscious and subconscious realms. These readings provide immediate guidance on specific questions, emotional patterns, and spiritual messages from your higher self and spiritual guides.</p>
+                </div>
+            </div>
+
+            <div class="expertise-block">
+                <div class="expertise-icon">🔮</div>
+                <div class="expertise-content">
+                    <h3>Ramal Astrology</h3>
+                    <div class="spiritual-divider"></div>
+                    <p>A unique Arabic divination system that uses geomantic symbols to answer specific questions with remarkable accuracy. This mystical art provides practical guidance for immediate decisions and reveals hidden influences affecting your current situation.</p>
+                </div>
+            </div>
+
+            <div class="expertise-block">
+                <div class="expertise-icon">🧘</div>
+                <div class="expertise-content">
+                    <h3>Chakra & Energy Healing</h3>
+                    <div class="spiritual-divider"></div>
+                    <p>Ancient Vedic wisdom combined with modern energy healing techniques to balance your subtle energy centers. This holistic approach addresses physical, emotional, and spiritual blockages, restoring harmony and vitality to your entire being.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Spiritual Quote Section -->
+<section class="spiritual-quote">
+    <div class="container">
+        <div class="quote-content">
+            <p class="quote-text">Every system is a mirror — revealing a different dimension of your soul.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Choose Your Path Section -->
+<section class="choose-path">
+    <div class="container">
+        <h2 class="path-title">Choose Your Path</h2>
+
+        <div class="path-cards">
+            <div class="path-card">
+                <h4>Need insight into karmic patterns?</h4>
+                <p>Uncover the hidden threads that weave through your life experiences and understand the deeper soul lessons at play.</p>
+                <span class="path-btn">Explore Bhrigu Nandi Nadi</span>
+            </div>
+
+            <div class="path-card">
+                <h4>Looking for emotional clarity?</h4>
+                <p>Navigate complex feelings and relationships with intuitive guidance that speaks directly to your heart and soul.</p>
+                <span class="path-btn">Try Tarot or Oracle Cards</span>
+            </div>
+
+            <div class="path-card">
+                <h4>Seeking healing?</h4>
+                <p>Restore balance and vitality to your energy system while addressing the root causes of physical and emotional imbalances.</p>
+                <span class="path-btn">Begin with Chakra Energy Work</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="expertise-cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Let the Right System Find You</h2>
+            <a href="book.html" class="cta-btn">Book a Session →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer will be loaded here -->
+<div id="footer-placeholder"></div>
+
+<script>
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Load navbar and footer
+    function loadComponent(elementId, fileName) {
+        fetch(fileName)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            })
+            .catch(error => {
+                console.log('Component loading failed:', error);
+                // Fallback content
+                if (elementId === 'navbar-placeholder') {
+                    document.getElementById(elementId).innerHTML = `
+                        <nav class="navbar">
+                            <div class="nav-container">
+                                <a href="index.html" class="nav-logo">AstroVediX</a>
+                                <ul class="nav-menu">
+                                    <li><a href="index.html" class="nav-link">Home</a></li>
+                                    <li><a href="services.html" class="nav-link">Services</a></li>
+                                    <li><a href="expertise.html" class="nav-link">Expertise</a></li>
+                                    <li><a href="about.html" class="nav-link">About</a></li>
+                                    <li><a href="book.html" class="nav-link">Book Now</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    `;
+                }
+            });
+    }
+
+    // Load components
+    loadComponent('navbar-placeholder', 'navbar.html');
+    loadComponent('footer-placeholder', 'footer.html');
+
+    // Scroll reveal animation for expertise blocks
+    function revealExpertiseBlocks() {
+        const blocks = document.querySelectorAll('.expertise-block');
+        const windowHeight = window.innerHeight;
+        const revealPoint = 100;
+
+        blocks.forEach((block, index) => {
+            const blockTop = block.getBoundingClientRect().top;
+
+            if (blockTop < windowHeight - revealPoint) {
+                setTimeout(() => {
+                    block.classList.add('revealed');
+                }, index * 200); // Stagger animation
+            }
+        });
+    }
+
+    // Scroll reveal animation for path cards
+    function revealPathCards() {
+        const cards = document.querySelectorAll('.path-card');
+        const windowHeight = window.innerHeight;
+        const revealPoint = 100;
+
+        cards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+
+            if (cardTop < windowHeight - revealPoint) {
+                setTimeout(() => {
+                    card.classList.add('revealed');
+                }, index * 150); // Stagger animation
+            }
+        });
+    }
+
+    // Initialize scroll reveal
+    function handleScrollReveal() {
+        revealExpertiseBlocks();
+        revealPathCards();
+    }
+
+    window.addEventListener('scroll', handleScrollReveal);
+    window.addEventListener('load', handleScrollReveal);
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+    });
+
+    // Intersection Observer for better performance
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('expertise-block')) {
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, index * 200);
+                } else if (entry.target.classList.contains('path-card')) {
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, index * 150);
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        const expertiseBlocks = document.querySelectorAll('.expertise-block');
+        const pathCards = document.querySelectorAll('.path-card');
+
+        expertiseBlocks.forEach(block => observer.observe(block));
+        pathCards.forEach(card => observer.observe(card));
+    });
+
+    // Add parallax effect to subtitle
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const subtitle = document.querySelector('.subtitle');
+        if (subtitle && scrolled < window.innerHeight) {
+            subtitle.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
+    });
+</script>
+</body>
+</html>

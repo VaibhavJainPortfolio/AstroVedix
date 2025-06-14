@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroVediX - Ancient Wisdom. Modern Clarity.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Additional styles for this specific page */
+        .hero {
+            background: linear-gradient(135deg, #372179 0%, #b66281 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .floating-icon {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .expertise-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 2rem 0;
+            scroll-behavior: smooth;
+        }
+
+        .expertise-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .expertise-scroll::-webkit-scrollbar-track {
+            background: var(--bg-soft);
+            border-radius: 10px;
+        }
+
+        .expertise-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent-purple);
+            border-radius: 10px;
+        }
+
+        .expertise-card {
+            min-width: 280px;
+            flex-shrink: 0;
+        }
+
+        .testimonial-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            display: none;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .accordion-item {
+            border: 1px solid rgba(55, 33, 121, 0.1);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: var(--bg-soft);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background: rgba(55, 33, 121, 0.05);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 200px;
+        }
+
+        .accordion-content-inner {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .service-card {
+            perspective: 1000px;
+            height: 300px;
+        }
+
+        .service-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .service-card:hover .service-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .service-card-front,
+        .service-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: var(--white);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+        }
+
+        .service-card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, var(--primary-main), var(--accent-purple));
+            color: var(--text-white);
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .founder-quote {
+            position: relative;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation will be loaded here -->
+<div id="navbar-placeholder"></div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="stars" id="stars"></div>
+
+    <!-- Floating spiritual icons -->
+    <div class="floating-icon" style="top: 20%; left: 10%; animation-delay: 0s;">
+        <i class="fas fa-moon" style="font-size: 2rem; color: rgba(255,255,255,0.3);"></i>
+    </div>
+    <div class="floating-icon" style="top: 30%; right: 15%; animation-delay: 2s;">
+        <i class="fas fa-star" style="font-size: 1.5rem; color: rgba(255,255,255,0.4);"></i>
+    </div>
+    <div class="floating-icon" style="bottom: 30%; left: 20%; animation-delay: 4s;">
+        <i class="fas fa-sun" style="font-size: 2.5rem; color: rgba(255,255,255,0.2);"></i>
+    </div>
+
+    <div class="container">
+        <div class="hero-content fade-in-text">
+            <h1>Ancient Wisdom.<br>Modern Clarity.</h1>
+            <p>Discover your cosmic blueprint and unlock the secrets of your destiny</p>
+            <a href="book.html" class="btn btn-primary">Begin Your Journey</a>
+        </div>
+    </div>
+</section>
+
+<!-- About AstroVediX -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="grid grid-2">
+            <div class="scroll-reveal">
+                <div class="glass-effect p-4">
+                    <i class="fas fa-infinity" style="font-size: 4rem; color: var(--accent-purple); margin-bottom: 2rem;"></i>
+                    <h2>About AstroVediX</h2>
+                    <p>We bridge ancient Vedic wisdom with modern psychological insights, offering personalized guidance that resonates with contemporary life. Our approach combines traditional astrological practices with cutting-edge interpretation methods.</p>
+                    <p>Founded on the belief that celestial patterns hold keys to personal transformation, we've helped thousands discover their true potential and navigate life's complexities with confidence.</p>
+                    <a href="about.html" class="btn btn-outline">Learn More About Us</a>
+                </div>
+            </div>
+            <div class="scroll-reveal">
+                <div style="position: relative; height: 400px; background: linear-gradient(45deg, var(--accent-lavender), var(--highlight-coral)); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-yin-yang" style="font-size: 6rem; color: white; opacity: 0.8;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Expertise -->
+<section class="section parallax-bg" style="background: linear-gradient(rgba(249, 244, 246, 0.9), rgba(249, 244, 246, 0.9));">
+    <div class="container">
+        <div class="text-center mb-5 scroll-reveal">
+            <h2>Our Expertise</h2>
+            <p>Comprehensive astrological services rooted in ancient traditions</p>
+        </div>
+
+        <div class="expertise-scroll">
+            <div class="card expertise-card card-pulse">
+                <i class="fas fa-chart-pie" style="font-size: 3rem; color: var(--accent-purple); margin-bottom: 1rem;"></i>
+                <h4>Natal Chart Reading</h4>
+                <p>Deep dive into your birth chart to understand your core personality and life path.</p>
+            </div>
+
+            <div class="card expertise-card card-pulse">
+                <i class="fas fa-heart" style="font-size: 3rem; color: var(--accent-pink); margin-bottom: 1rem;"></i>
+                <h4>Relationship Compatibility</h4>
+                <p>Discover cosmic connections and navigate relationship dynamics with clarity.</p>
+            </div>
+
+            <div class="card expertise-card card-pulse">
+                <i class="fas fa-briefcase" style="font-size: 3rem; color: var(--highlight-gold); margin-bottom: 1rem;"></i>
+                <h4>Career Guidance</h4>
+                <p>Align your professional path with your celestial blueprint for success.</p>
+            </div>
+
+            <div class="card expertise-card card-pulse">
+                <i class="fas fa-calendar-alt" style="font-size: 3rem; color: var(--accent-lavender); margin-bottom: 1rem;"></i>
+                <h4>Timing & Transits</h4>
+                <p>Navigate life's timing with precision using planetary movement insights.</p>
+            </div>
+
+            <div class="card expertise-card card-pulse">
+                <i class="fas fa-gem" style="font-size: 3rem; color: var(--highlight-coral); margin-bottom: 1rem;"></i>
+                <h4>Gemstone Therapy</h4>
+                <p>Harness the power of crystals and gems for healing and enhancement.</p>
+            </div>
+
+            <div class="card expertise-card card-pulse">
+                <i class="fas fa-om" style="font-size: 3rem; color: var(--primary-main); margin-bottom: 1rem;"></i>
+                <h4>Spiritual Guidance</h4>
+                <p>Connect with your higher purpose and spiritual evolution journey.</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="expertise.html" class="btn btn-secondary">Explore All Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Offered -->
+<section class="section">
+    <div class="container">
+        <div class="text-center mb-5 scroll-reveal">
+            <h2>Services Offered</h2>
+            <p>Transform your life with our comprehensive astrological services</p>
+        </div>
+
+        <div class="grid grid-3">
+            <div class="service-card scroll-reveal">
+                <div class="service-card-inner">
+                    <div class="service-card-front">
+                        <i class="fas fa-user-circle" style="font-size: 3rem; color: var(--accent-purple); margin-bottom: 1rem;"></i>
+                        <h4>Personal Consultations</h4>
+                        <p>One-on-one sessions tailored to your unique cosmic signature</p>
+                    </div>
+                    <div class="service-card-back">
+                        <h4>Personal Consultations</h4>
+                        <p>• 60-minute detailed sessions</p>
+                        <p>• Personalized chart analysis</p>
+                        <p>• Life guidance & predictions</p>
+                        <p>• Follow-up support included</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card scroll-reveal">
+                <div class="service-card-inner">
+                    <div class="service-card-front">
+                        <i class="fas fa-users" style="font-size: 3rem; color: var(--accent-pink); margin-bottom: 1rem;"></i>
+                        <h4>Couple's Reading</h4>
+                        <p>Navigate relationships with cosmic compatibility insights</p>
+                    </div>
+                    <div class="service-card-back">
+                        <h4>Couple's Reading</h4>
+                        <p>• Synastry chart analysis</p>
+                        <p>• Compatibility assessment</p>
+                        <p>• Communication guidance</p>
+                        <p>• Future timeline insights</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card scroll-reveal">
+                <div class="service-card-inner">
+                    <div class="service-card-front">
+                        <i class="fas fa-baby" style="font-size: 3rem; color: var(--highlight-gold); margin-bottom: 1rem;"></i>
+                        <h4>Child Astrology</h4>
+                        <p>Understand your child's potential and guide their growth</p>
+                    </div>
+                    <div class="service-card-back">
+                        <h4>Child Astrology</h4>
+                        <p>• Personality insights</p>
+                        <p>• Educational guidance</p>
+                        <p>• Talent identification</p>
+                        <p>• Parenting strategies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="services.html" class="btn btn-primary">View All Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Meet the Founder -->
+<section class="section" style="background: linear-gradient(135deg, var(--bg-soft), var(--bg-light));">
+    <div class="container">
+        <div class="grid grid-2">
+            <div class="scroll-reveal">
+                <div style="position: relative; height: 400px; background: linear-gradient(45deg, var(--primary-main), var(--accent-purple)); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user-astronaut" style="font-size: 6rem; color: white; opacity: 0.8;"></i>
+                </div>
+            </div>
+            <div class="scroll-reveal">
+                <div class="founder-quote glass-effect">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <h3>Master Arjun Vedic</h3>
+                    <h4 style="color: var(--accent-purple); margin-bottom: 2rem;">Founder & Chief Astrologer</h4>
+                    <p style="font-style: italic; font-size: 1.2rem; line-height: 1.8;">
+                        "For over two decades, I have dedicated my life to bridging the wisdom of our ancestors with the needs of modern souls. Every chart tells a story, every constellation holds a key to transformation."
+                    </p>
+                    <div style="margin-top: 2rem;">
+                        <p><strong>25+ Years Experience</strong></p>
+                        <p><strong>10,000+ Consultations</strong></p>
+                        <p><strong>Traditional Vedic Training</strong></p>
+                    </div>
+                    <a href="founder.html" class="btn btn-outline mt-3">Meet the Master</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Carousel -->
+<section class="section">
+    <div class="container">
+        <div class="text-center mb-5 scroll-reveal">
+            <h2>What Our Clients Say</h2>
+            <p>Transformative experiences shared by our community</p>
+        </div>
+
+        <div class="testimonial-carousel">
+            <div class="testimonial-slide active">
+                <div class="card text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                    </div>
+                    <p style="font-style: italic; font-size: 1.1rem;">"The reading was incredibly accurate and insightful. Master Arjun helped me understand patterns in my life that I never noticed before. Truly transformative!"</p>
+                    <h4>- Sarah M.</h4>
+                    <p style="color: var(--text-light);">Business Executive</p>
+                </div>
+            </div>
+
+            <div class="testimonial-slide">
+                <div class="card text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                    </div>
+                    <p style="font-style: italic; font-size: 1.1rem;">"My relationship reading provided clarity I was desperately seeking. The insights about compatibility and timing were spot-on. Highly recommended!"</p>
+                    <h4>- David & Emma L.</h4>
+                    <p style="color: var(--text-light);">Married Couple</p>
+                </div>
+            </div>
+
+            <div class="testimonial-slide">
+                <div class="card text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--highlight-gold);"></i>
+                    </div>
+                    <p style="font-style: italic; font-size: 1.1rem;">"The career guidance I received changed my professional trajectory completely. I'm now in a role that aligns perfectly with my cosmic blueprint."</p>
+                    <h4>- Michael R.</h4>
+                    <p style="color: var(--text-light);">Software Engineer</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button class="btn btn-outline" onclick="prevTestimonial()">←</button>
+            <button class="btn btn-outline" onclick="nextTestimonial()" style="margin-left: 1rem;">→</button>
+            <a href="testimonials.html" class="btn btn-secondary" style="margin-left: 2rem;">Read All Reviews</a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQs Accordion -->
+<section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+        <div class="text-center mb-5 scroll-reveal">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about our services</p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="accordion-item scroll-reveal">
+                <div class="accordion-header" onclick="toggleAccordion(0)">
+                    <h4>How accurate are astrological predictions?</h4>
+                    <i class="fas fa-chevron-down" id="icon-0"></i>
+                </div>
+                <div class="accordion-content" id="content-0">
+                    <div class="accordion-content-inner">
+                        <p>Astrological accuracy depends on precise birth data and skilled interpretation. Our predictions focus on trends and timing rather than specific events, with many clients reporting 80-90% accuracy in personality insights and life pattern recognition.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item scroll-reveal">
+                <div class="accordion-header" onclick="toggleAccordion(1)">
+                    <h4>What information do I need for a reading?</h4>
+                    <i class="fas fa-chevron-down" id="icon-1"></i>
+                </div>
+                <div class="accordion-content" id="content-1">
+                    <div class="accordion-content-inner">
+                        <p>We need your exact birth date, time (to the minute if possible), and location. If birth time is unknown, we can work with date and location, though some aspects of the reading may be limited.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item scroll-reveal">
+                <div class="accordion-header" onclick="toggleAccordion(2)">
+                    <h4>How long does a consultation last?</h4>
+                    <i class="fas fa-chevron-down" id="icon-2"></i>
+                </div>
+                <div class="accordion-content" id="content-2">
+                    <div class="accordion-content-inner">
+                        <p>Standard consultations are 60 minutes, which includes chart preparation, detailed analysis, and Q&A. We also offer 30-minute focused sessions and 90-minute comprehensive readings for complex cases.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item scroll-reveal">
+                <div class="accordion-header" onclick="toggleAccordion(3)">
+                    <h4>Do you offer online consultations?</h4>
+                    <i class="fas fa-chevron-down" id="icon-3"></i>
+                </div>
+                <div class="accordion-content" id="content-3">
+                    <div class="accordion-content-inner">
+                        <p>Yes! We conduct consultations via video call, phone, or in-person. Online sessions are just as effective as in-person meetings, and we serve clients worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="faq.html" class="btn btn-primary">View All FAQs</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer will be loaded here -->
+<div id="footer-placeholder"></div>
+
+<script>
+    // Create starfield
+function createStars() {
+    const starsContainer = document.getElementById('stars');
+    const starCount = 100;
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.width = Math.random() * 3 + 1 + 'px';
+        star.style.height = star.style.width;
+        star.style.animationDelay = Math.random() * 2 + 's';
+        starsContainer.appendChild(star);
+    }
+}
+
+// Scroll reveal animation
+function revealOnScroll() {
+    const reveals = document.querySelectorAll('.scroll-reveal');
+
+    reveals.forEach(reveal => {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveal.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveal.classList.add('revealed');
+        }
+    });
+}
+
+// Testimonial carousel
+let currentTestimonial = 0;
+const testimonials = document.querySelectorAll('.testimonial-slide');
+
+function showTestimonial(index) {
+    testimonials.forEach(slide => slide.classList.remove('active'));
+    testimonials[index].classList.add('active');
+}
+
+function nextTestimonial() {
+    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+    showTestimonial(currentTestimonial);
+}
+
+function prevTestimonial() {
+    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(currentTestimonial);
+}
+
+// Auto-advance testimonials
+setInterval(nextTestimonial, 5000);
+
+// FAQ Accordion
+function toggleAccordion(index) {
+    const content = document.getElementById(`content-${index}`);
+    const icon = document.getElementById(`icon-${index}`);
+
+    if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        // Close all other accordions
+        document.querySelectorAll('.accordion-content').forEach(item => {
+            item.classList.remove('active');
+        });
+        document.querySelectorAll('.accordion-header i').forEach(icon => {
+            icon.style.transform = 'rotate(0deg)';
+        });
+
+        // Open current accordion
+        content.classList.add('active');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+
+// Component loading with loading state tracking
+const loadingStates = {
+    navbar: false,
+    footer: false
+};
+
+function loadComponent(elementId, fileName) {
+    const componentKey = elementId.replace('-placeholder', '');
+
+    // Prevent multiple loads
+    if (loadingStates[componentKey]) {
+        console.log(`${componentKey} already loading, skipping...`);
+        return;
+    }
+
+    loadingStates[componentKey] = true;
+    console.log(`Loading ${fileName} into ${elementId}`);
+
+    fetch(fileName)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            const element = document.getElementById(elementId);
+            if (element && element.innerHTML.trim() === '') {
+                element.innerHTML = data;
+                console.log(`Successfully loaded ${fileName}`);
+
+                // Initialize footer animations if footer was loaded
+                if (elementId === 'footer-placeholder' && typeof initAstroVediXFooterAnimation === 'function') {
+                    setTimeout(initAstroVediXFooterAnimation, 100);
+                }
+            }
+        })
+        .catch(error => {
+            console.error(`Failed to load ${fileName}:`, error);
+
+            // Fallback content
+            const element = document.getElementById(elementId);
+            if (!element || element.innerHTML.trim() !== '') return;
+
+            if (elementId === 'navbar-placeholder') {
+                element.innerHTML = `
+                    <nav class="navbar">
+                        <div class="nav-container">
+                            <a href="index.html" class="nav-logo">AstroVediX</a>
+                            <ul class="nav-menu">
+                                <li><a href="index.html" class="nav-link">Home</a></li>
+                                <li><a href="about.html" class="nav-link">About</a></li>
+                                <li><a href="services.html" class="nav-link">Services</a></li>
+                                <li><a href="book.html" class="nav-link">Book Now</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                `;
+            } else if (elementId === 'footer-placeholder') {
+                element.innerHTML = `
+                    <footer style="background: linear-gradient(135deg, #2d1653, #372179); color: #faf9fa; padding: 4rem 0 1rem; margin-top: 5rem;">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                                <div>
+                                    <a href="index.html" style="font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: #e2b069; text-decoration: none; display: inline-block; margin-bottom: 1rem;">AstroVediX</a>
+                                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6; margin-bottom: 1.5rem;">
+                                        Where ancient wisdom meets modern insights. Discover your cosmic blueprint through authentic Vedic astrology.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 style="color: #e2b069; margin-bottom: 1.5rem; font-size: 1.4rem;">Quick Links</h3>
+                                    <ul style="list-style: none; padding: 0; margin: 0;">
+                                        <li style="margin-bottom: 0.8rem;"><a href="index.html" style="color: #faf9fa; text-decoration: none;">Home</a></li>
+                                        <li style="margin-bottom: 0.8rem;"><a href="about.html" style="color: #faf9fa; text-decoration: none;">About</a></li>
+                                        <li style="margin-bottom: 0.8rem;"><a href="services.html" style="color: #faf9fa; text-decoration: none;">Services</a></li>
+                                        <li style="margin-bottom: 0.8rem;"><a href="contact.html" style="color: #faf9fa; text-decoration: none;">Contact</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 style="color: #e2b069; margin-bottom: 1.5rem; font-size: 1.4rem;">Contact Info</h3>
+                                    <p style="color: #faf9fa; margin-bottom: 0.8rem;">📧 ask.astrovedix@gmail.com</p>
+                                    <p style="color: #faf9fa; margin-bottom: 0.8rem;">📞 +91-76652-70799</p>
+                                    <p style="color: #faf9fa;">📍 Bathinda, Punjab</p>
+                                </div>
+                            </div>
+                            <div style="text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.15);">
+                                <p style="color: rgba(255, 255, 255, 0.8);">&copy; 2025 AstroVediX. Astrology meets science.</p>
+                            </div>
+                        </div>
+                    </footer>
+                `;
+            }
+        })
+        .finally(() => {
+            loadingStates[componentKey] = false;
+        });
+}
+
+// Single initialization function
+function initializePage() {
+    console.log('Initializing page...');
+
+    // Load components only once
+    const navbarPlaceholder = document.getElementById('navbar-placeholder');
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+
+    if (navbarPlaceholder && navbarPlaceholder.innerHTML.trim() === '') {
+        loadComponent('navbar-placeholder', 'navbar.html');
+    }
+
+    if (footerPlaceholder && footerPlaceholder.innerHTML.trim() === '') {
+        loadComponent('footer-placeholder', 'footer.html');
+    }
+
+    // Initialize other page functions
+    createStars();
+
+    // Add scroll event listener for reveal animation
+    window.addEventListener('scroll', revealOnScroll);
+
+    // Initial call to reveal visible elements
+    revealOnScroll();
+}
+
+// Single initialization call
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePage);
+} else {
+    initializePage();
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services - AstroVediX | Ancient Wisdom for Modern Life</title>
+  <meta name="description" content="Discover our comprehensive range of astrological and spiritual services - from personal consultations to chakra healing, designed to guide your life journey.">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Additional styles for services page */
+    .services-hero {
+        background: linear-gradient(135deg, #f9f4f6 0%, #faf9fa 100%);
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .services-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+            radial-gradient(circle at 20% 30%, rgba(55, 33, 121, 0.08), transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(182, 98, 129, 0.06), transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(226, 176, 105, 0.05), transparent 50%);
+        pointer-events: none;
+    }
+
+    /* Floating sparks animation */
+    .divine-spark {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: radial-gradient(circle, #e2b069, transparent);
+        border-radius: 50%;
+        opacity: 0;
+        animation: floatSpark 6s infinite ease-in-out;
+    }
+
+    .divine-spark:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+    .divine-spark:nth-child(2) { top: 60%; left: 85%; animation-delay: 1.5s; }
+    .divine-spark:nth-child(3) { top: 30%; left: 70%; animation-delay: 3s; }
+    .divine-spark:nth-child(4) { top: 80%; left: 25%; animation-delay: 4.5s; }
+
+    @keyframes floatSpark {
+        0%, 100% { opacity: 0; transform: translateY(0px) scale(0.5); }
+        50% { opacity: 0.8; transform: translateY(-20px) scale(1); }
+    }
+
+    .services-hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .services-hero h1 {
+        font-size: 3.5rem;
+        color: var(--primary-dark);
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--primary-dark), var(--accent-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .services-hero .subtitle {
+        font-size: 1.3rem;
+        color: var(--text-light);
+        font-weight: 300;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease 0.5s forwards;
+    }
+
+    /* Services Grid */
+    .services-section {
+        padding: 6rem 0;
+        background: var(--white);
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-top: 4rem;
+    }
+
+    .service-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 20px rgba(55, 33, 121, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(55, 33, 121, 0.05);
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple), var(--highlight-gold));
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    .service-card:hover::before {
+        transform: translateX(0);
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(55, 33, 121, 0.15);
+    }
+
+    .service-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        display: block;
+        filter: drop-shadow(0 2px 4px rgba(55, 33, 121, 0.1));
+    }
+
+    .service-title {
+        font-size: 1.4rem;
+        color: var(--primary-dark);
+        margin-bottom: 1rem;
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+    }
+
+    .service-description {
+        color: var(--text-light);
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, var(--bg-soft), var(--bg-light));
+        padding: 5rem 0;
+        text-align: center;
+        position: relative;
+    }
+
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(55, 33, 121, 0.03), transparent 70%);
+        pointer-events: none;
+    }
+
+    .cta-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .cta-title {
+        font-size: 2.5rem;
+        color: var(--primary-dark);
+        margin-bottom: 1rem;
+    }
+
+    .cta-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+    }
+
+    .cta-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #e08778, #d67368);
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(224, 135, 120, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #372179, #30227d);
+        transition: left 0.3s ease;
+        z-index: -1;
+    }
+
+    .cta-btn:hover::before {
+        left: 0;
+    }
+
+    .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(224, 135, 120, 0.4);
+        color: white;
+    }
+
+    /* Scroll reveal animation */
+    .reveal {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .services-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .services-hero .subtitle {
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .service-card {
+            padding: 1.5rem;
+        }
+
+        .services-hero h1 {
+            font-size: 2rem;
+        }
+    }
+  </style>
+</head>
+<body>
+<!-- Navigation will be loaded here -->
+<div id="navbar-placeholder"></div>
+
+<!-- Services Hero Section -->
+<section class="services-hero">
+  <div class="divine-spark"></div>
+  <div class="divine-spark"></div>
+  <div class="divine-spark"></div>
+  <div class="divine-spark"></div>
+
+  <div class="container">
+    <div class="services-hero-content">
+      <h1 class="scale-in">Our Services</h1>
+      <p class="subtitle">Ancient Insight, Tailored Guidance</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services Grid Section -->
+<section class="services-section">
+  <div class="container">
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-icon">🔮</span>
+        <h3 class="service-title">Personal Astrological Consultations</h3>
+        <p class="service-description">Comprehensive birth chart analysis revealing your personality, strengths, challenges, and life patterns. Discover your cosmic blueprint and navigate life's journey with clarity and purpose.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🃏</span>
+        <h3 class="service-title">Tarot / Oracle Card Readings</h3>
+        <p class="service-description">Intuitive card readings that provide guidance on specific questions, situations, or life transitions. Unlock deeper insights into your subconscious mind and spiritual path.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🎓</span>
+        <h3 class="service-title">Career Guidance (Students & Professionals)</h3>
+        <p class="service-description">Astrological career counseling to identify your natural talents, ideal profession, and timing for career moves. Perfect for students choosing paths or professionals seeking direction.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">👶</span>
+        <h3 class="service-title">Personality & Potential Guidance for Children</h3>
+        <p class="service-description">Understanding your child's unique astrological makeup to nurture their natural gifts, address challenges early, and support their holistic development with cosmic wisdom.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">💞</span>
+        <h3 class="service-title">Marriage Compatibility (Beyond Gun Milan)</h3>
+        <p class="service-description">Deep compatibility analysis examining emotional, mental, and spiritual connection between partners. Goes beyond traditional matching to explore true relationship harmony.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🕉️</span>
+        <h3 class="service-title">Karmic Patterns & Past Life Baggage</h3>
+        <p class="service-description">Uncover recurring life themes, karmic debts, and soul lessons from past incarnations. Transform limiting patterns and accelerate your spiritual evolution.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🌌</span>
+        <h3 class="service-title">Soul Journey Themes & Life Purpose Discovery</h3>
+        <p class="service-description">Discover your soul's mission in this lifetime through advanced astrological techniques. Align with your highest purpose and create meaningful impact in the world.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">💰</span>
+        <h3 class="service-title">Wealth & Financial Potential Analysis</h3>
+        <p class="service-description">Astrological wealth assessment examining your money patterns, investment timing, and financial growth potential. Align your resources with cosmic abundance flows.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🔢</span>
+        <h3 class="service-title">Astro-Numerology for Brands, Business Names & Events</h3>
+        <p class="service-description">Create powerful brand identities and business names using combined astrological and numerological principles. Ensure cosmic alignment for ventures and important events.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🩺</span>
+        <h3 class="service-title">Medical Astrology for Wellness Insights</h3>
+        <p class="service-description">Identify health predispositions, optimal healing approaches, and preventive measures through astrological health analysis. Complement medical care with cosmic wellness wisdom.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🔮</span>
+        <h3 class="service-title">Chakra Analysis & Energy Balancing</h3>
+        <p class="service-description">Comprehensive energy center assessment revealing blockages, imbalances, and healing pathways. Restore harmony to your subtle energy system for optimal well-being.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">💎</span>
+        <h3 class="service-title">Healing by Gemstones & Crystals</h3>
+        <p class="service-description">Personalized gemstone recommendations based on your astrological chart. Harness the healing vibrations of crystals to enhance positive planetary influences.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">📿</span>
+        <h3 class="service-title">Mantra & Meditation Guidance</h3>
+        <p class="service-description">Receive personalized mantras and meditation practices aligned with your spiritual needs. Deepen your connection to divine consciousness and inner peace.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">📆</span>
+        <h3 class="service-title">Auspicious Muhurta Determination</h3>
+        <p class="service-description">Select the most favorable timing for important life events, ceremonies, and new beginnings. Align your actions with cosmic support for maximum success.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">👶</span>
+        <h3 class="service-title">Childbirth Timing Guidance (for Planned Deliveries)</h3>
+        <p class="service-description">Astrological consultation for planned cesarean deliveries to choose auspicious timing that supports the child's life journey and planetary influences.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">Not sure which service is right for you?</h2>
+      <p class="cta-subtitle">Let us guide you to the most aligned offering.</p>
+      <a href="book.html" class="cta-btn">Book a Session Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer will be loaded here -->
+<div id="footer-placeholder"></div>
+
+<script>
+  // Smooth scroll behavior
+  document.documentElement.style.scrollBehavior = 'smooth';
+
+  // Load navbar and footer
+  function loadComponent(elementId, fileName) {
+      fetch(fileName)
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById(elementId).innerHTML = data;
+          })
+          .catch(error => {
+              console.log('Component loading failed:', error);
+              // Fallback content
+              if (elementId === 'navbar-placeholder') {
+                  document.getElementById(elementId).innerHTML = `
+                      <nav class="navbar">
+                          <div class="nav-container">
+                              <a href="index.html" class="nav-logo">AstroVediX</a>
+                              <ul class="nav-menu">
+                                  <li><a href="index.html" class="nav-link">Home</a></li>
+                                  <li><a href="services.html" class="nav-link">Services</a></li>
+                                  <li><a href="about.html" class="nav-link">About</a></li>
+                                  <li><a href="book.html" class="nav-link">Book Now</a></li>
+                              </ul>
+                          </div>
+                      </nav>
+                  `;
+              }
+          });
+  }
+
+  // Load components
+  loadComponent('navbar-placeholder', 'navbar.html');
+  loadComponent('footer-placeholder', 'footer.html');
+
+  // Scroll reveal animation
+  function revealOnScroll() {
+      const cards = document.querySelectorAll('.service-card');
+      const windowHeight = window.innerHeight;
+      const revealPoint = 100;
+
+      cards.forEach((card, index) => {
+          const cardTop = card.getBoundingClientRect().top;
+
+          if (cardTop < windowHeight - revealPoint) {
+              setTimeout(() => {
+                  card.classList.add('reveal');
+              }, index * 100); // Stagger animation
+          }
+      });
+  }
+
+  // Initialize scroll reveal
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+          if (window.scrollY > 50) {
+              navbar.classList.add('scrolled');
+          } else {
+              navbar.classList.remove('scrolled');
+          }
+      }
+  });
+
+  // Add intersection observer for better performance
+  const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+              setTimeout(() => {
+                  entry.target.classList.add('reveal');
+              }, index * 100);
+          }
+      });
+  }, observerOptions);
+
+  // Observe all service cards
+  document.addEventListener('DOMContentLoaded', () => {
+      const serviceCards = document.querySelectorAll('.service-card');
+      serviceCards.forEach(card => {
+          observer.observe(card);
+      });
+  });
+</script>
+</body>
+</html>
