@@ -49,24 +49,6 @@ AstroVediX bridges **the profound wisdom of ancient Vedic sciences with today’
 3. **Serve the files** locally or deploy them to your preferred platform (Netlify, Vercel, or a custom server).
 4. The website is designed to be **self-contained and lightweight with a minimum dependency on external libraries**.
 
-## 🔹 Contact Information
-
-For inquiries or support:
-
-- 📧 Email: [ask.astrovedix@gmail.com](mailto:ask.astrovedix@gmail.com)
-- 📱 Phone/WhatsApp: +91-9587886006
-- 📸 Instagram: [@AstroVediX](https://instagram.com)
-- 📺 YouTube: [AstroVediX Channel](https://youtube.com)
-
-## 🔹 Credit
-
-Website designed by **AstroVediX team with assistance from GPT**.
-
-## 🔹 License
-
-This project is **open-source and free to reuse and modify**.  
-Please attribute **AstroVediX** when you reuse this project.
-
 
 ✨ **Thank you for choosing AstroVediX!** 
 ✨ May your path be filled with clarity, peace, and guidance.   
